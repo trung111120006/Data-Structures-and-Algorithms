@@ -27,7 +27,64 @@ void traversal(Node* head){
     }
 }
 //Insert at beginning 
+void insert_beginning(Node* &head, int value){
+    Node* newnode = new Node(value);
+    newnode -> next = head;
+    head = newnode;
+}
+//Insert at end 
+void insert_end(Node* &head, int value){
+    Node* newnode = new Node(value);
+    if (head == nullptr) {
+        head = newnode;
+        return;
+    }
+    Node* current = head; 
+    while (current -> next != nullptr){
+        current = current -> next;
+    }
+    current -> next = newnode;
+}
+//Delete node
+void deleteNode(Node*& head, int value) {
+    if (head == nullptr) {
+        return;
+    }
 
+    if (head->data == value) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return;
+    }
+
+    Node* current = head;
+
+    while (current->next != nullptr &&
+           current->next->data != value) {
+        current = current->next;
+    }
+
+    if (current->next != nullptr) {
+        Node* temp = current->next;
+        current->next = temp->next;
+        delete temp;
+    }
+}
+//Search 
+bool search(Node* head, int target) {
+    Node* current = head;
+
+    while (current != nullptr) {
+        if (current->data == target) {
+            return true;
+        }
+
+        current = current->next;
+    }
+
+    return false;
+}
 
 int main (){
     Node* first = new Node(10);
