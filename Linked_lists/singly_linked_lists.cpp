@@ -89,7 +89,10 @@ bool search(Node* head, int target) {
 int main (){
     Node* first = new Node(10);
     Node* second = new Node(20);
-    Node* thrid = new Node(30);
+    Node* third = new Node(30);
     first->next = second; 
-    second->next = thrid;
+    second->next = third;
+    traversal(first);
+    Node* zero = new Node(0);
+    insert_beginning(zero , 0);
 }
